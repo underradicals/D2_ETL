@@ -1,6 +1,7 @@
 .idea/
 .vscode/
-data/
+data/assets/
+data/world_content_data/
 .venv/
 
 settings.json
