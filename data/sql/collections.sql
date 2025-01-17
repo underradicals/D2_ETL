@@ -70,6 +70,36 @@ select distinct json ->> 'hash'                               as Id,
 from DestinyEquipmentSlotDefinition;
 
 
+-- WeaponItem Definition
+select json ->> 'hash'                                      as Id,
+       json -> 'displayProperties' ->> 'name'               as Name,
+       coalesce(json -> 'displayProperties' ->> 'icon', '') as Icon,
+       coalesce(json ->> 'iconWatermark', '')               as Watermark,
+       coalesce(json ->> 'screenshot', '')                  as Screenshot,
+       json ->> 'flavorText'                                as FlavorText,
+       json ->> 'itemTypeDisplayName'                       as DisplayName,
+       json -> 'inventory' ->> 'tierTypeName'               as TierType,
+       json -> 'equippingBlock' ->> 'ammoType'              as AmmoType,
+       json -> 'equippingBlock' ->> 'equipmentSlotTypeHash' as EquipmentSlot,
+       coalesce(json ->> 'loreHash', 0)                     as LoreHash,
+       json ->> 'defaultDamageTypeHash'                     as DamageTypeHash
+from DestinyInventoryItemDefinition
+where json ->> 'itemType' = 3;
+
+
+-- SocketItem Definition
+select json ->> 'hash'                                      as Id,
+       json -> 'displayProperties' ->> 'name'               as Name,
+       coalesce(json -> 'displayProperties' ->> 'icon', '') as Icon,
+       coalesce(json ->> 'iconWatermark', '')               as Watermark,
+       coalesce(json ->> 'screenshot', '')                  as Screenshot,
+       json ->> 'flavorText'                                as FlavorText,
+       json ->> 'itemTypeDisplayName'                       as DisplayName,
+       json -> 'inventory' ->> 'tierTypeName'               as TierType
+from DestinyInventoryItemDefinition
+where json ->> 'itemType' = 19;
+
+
 -- WeaponStatDefinition
 with cte as (select DestinyInventoryItemDefinition.json ->> 'hash' as WeaponId,
                     value
@@ -96,7 +126,7 @@ from cte1, json_each(cte1.Value)
 order by WeaponId;
 
 -- Plug-set Hash Definition
-select DestinyPlugSetDefinition.json ->> 'hash' as Id,
-       json_each.value ->> 'plugItemHash'       as InventoryItemId
+select distinct DestinyPlugSetDefinition.json ->> 'hash' as Id,
+                json_each.value ->> 'plugItemHash'       as InventoryItemId
 from DestinyPlugSetDefinition, json_each(DestinyPlugSetDefinition.json ->> 'reusablePlugItems')
 order by Id;

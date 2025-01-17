@@ -6,7 +6,8 @@ data/world_content_data/
 
 settings.json
 *.db
-
+*.db-shm
+*.db-wal
 
 __pycache__/
 *.ini
