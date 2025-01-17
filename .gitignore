@@ -2,6 +2,7 @@
 .vscode/
 data/assets/
 data/world_content_data/
+data/data_assets/
 .venv/
 
 settings.json
