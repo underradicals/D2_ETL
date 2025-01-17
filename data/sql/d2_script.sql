@@ -13,6 +13,38 @@ drop table if exists damage_type_definition;
 drop table if exists equipment_slot_definition;
 drop table if exists lore_type_definition;
 drop table if exists weapon_type_definition;
+drop table if exists season_definition;
+drop table if exists pbi_weapon_data;
+
+
+-- Season Defs
+create table if not exists target.season_definition
+(
+    id            integer not null,
+    name          text    not null,
+    description   text    not null,
+    icon          text    not null,
+    season_number integer not null,
+    start_date    text    not null,
+    end_date      text    not null,
+    constraint season_definition_pk primary key (id)
+);
+create index target.season_definition_name_idx on season_definition (name);
+create index target.season_definition_season_number_idx on season_definition (season_number);
+create index target.season_definition_start_date_idx on season_definition (start_date);
+create index target.season_definition_end_date_idx on season_definition (end_date);
+
+
+insert into target.season_definition (id, name, description, icon, season_number, start_date, end_date)
+select json -> 'hash'                                              as Id,
+       json -> 'displayProperties' ->> 'name'                      as Name,
+       coalesce(json -> 'displayProperties' ->> 'description', '') as Description,
+       coalesce(json -> 'displayProperties' ->> 'icon', '')        as Icon,
+       json ->> 'seasonNumber'                                     as SeasonNumber,
+       coalesce(json ->> 'startDate', '')                          as StartDate,
+       coalesce(json ->> 'endDate', '')                            as EndDate
+from DestinySeasonDefinition
+order by SeasonNumber;
 
 
 -- Damage Type Defs
@@ -307,6 +339,84 @@ select distinct DestinyPlugSetDefinition.json ->> 'hash' as Id,
                 json_each.value ->> 'plugItemHash'       as InventoryItemId
 from DestinyPlugSetDefinition, json_each(DestinyPlugSetDefinition.json ->> 'reusablePlugItems')
 order by Id;
+
+
+-- Update Season Definition
+update target.season_definition
+set name       = 'The Red War',
+    start_date = '2017-09-06T17:00:00Z',
+    end_date   = '2017-12-05T17:00:00Z'
+where id = 965757574;
+
+
+-- Curse of Osiris
+update target.season_definition
+set start_date = '2017-12-05T17:00:00Z',
+    end_date   = '2018-05-08T17:00:00Z'
+where id = 2973407602;
+
+-- Warmind
+update target.season_definition
+set name       = 'Resurgence (Warmind)',
+    start_date = '2018-05-08T17:00:00Z',
+    end_date   = '2018-09-04T17:00:00Z'
+where id = 4033618594;
+
+
+-- Season of the Outlaw
+update target.season_definition
+set start_date = '2018-09-04T17:00:00Z',
+    end_date   = '2018-12-04T17:00:00Z'
+where id = 2026773320;
+
+
+-- Season of the Forge
+update target.season_definition
+set start_date = '2018-12-04T17:00:00Z',
+    end_date   = '2019-03-05T17:00:00Z'
+where id = 2236269318;
+
+
+-- Season of the Drifter
+update target.season_definition
+set start_date = '2019-03-05T17:00:00Z',
+    end_date   = '2019-06-04T17:00:00Z'
+where id = 2891088360;
+
+
+-- Season of Opulence
+update target.season_definition
+set start_date = '2019-06-04T17:00:00Z',
+    end_date   = '2019-09-30T17:00:00Z'
+where id = 4275747712;
+
+
+-- Test PowerBI Table
+create table if not exists target.pbi_weapon_data
+(
+    id             integer not null,
+    name           text    not null,
+    display_name   text    not null,
+    tier_type      text    not null,
+    ammo_type      text    not null,
+    equipment_slot text    not null,
+    damage_type    text    not null,
+    constraint pbi_weapon_data_pk primary key (id)
+);
+create index target.pbi_weapon_data_name_idx on pbi_weapon_data (name);
+create index target.pbi_weapon_data_display_name_idx on pbi_weapon_data (display_name);
+create index target.pbi_weapon_data_tier_type_idx on pbi_weapon_data (tier_type);
+create index target.pbi_weapon_data_ammo_type_idx on pbi_weapon_data (ammo_type);
+create index target.pbi_weapon_data_equipment_slot_idx on pbi_weapon_data (equipment_slot);
+create index target.pbi_weapon_data_damage_type_idx on pbi_weapon_data (damage_type);
+
+
+insert into target.pbi_weapon_data (id, name, display_name, tier_type, ammo_type, equipment_slot, damage_type)
+select distinct w.id, w.name, w.display_name, w.tier_type, atd.name, esd.name, dtd.name
+from weapon as w
+         inner join ammo_type_definition atd on w.ammo_type_id = atd.id
+         inner join equipment_slot_definition esd on w.equipment_slot_id = esd.id
+         inner join damage_type_definition dtd on w.damage_type_id = dtd.id;
 
 
 detach target;
