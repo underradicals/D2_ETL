@@ -2,6 +2,7 @@
 drop table if exists stat_definition;
 drop table if exists weapon_socket_definition;
 drop table if exists weapon_stat_definition;
+drop table if exists plug_set_definition;
 drop table if exists socket;
 drop table if exists weapon;
 drop table if exists ammo_type_definition;
