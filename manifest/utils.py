@@ -102,6 +102,23 @@ def download_d2_json(s: Session, iterable: list, dev: bool = False):
     print(f'{iterable[1]} downloaded to {p.name}')
 
 
+def update_manifest(manifest_json, http_session):
+    manifest = Manifest(manifest_json)
+    db_url = get_db_url(manifest, LANGUAGE)
+    json_urls = get_json_urls(manifest, LANGUAGE)
+    json_urls.append(["world_content.zip", db_url])
+    for item in json_urls:
+        download_d2_json(http_session, item, dev=True)
+    with ZipFile(WORLD_CONTENT_ZIP) as zip64:
+        archive_item_name = zip64.namelist()[0]
+        archive_content = zip64.open(archive_item_name, "r")
+        content = archive_content.read()
+        WORLD_CONTENT_DB.write_bytes(content)
+        archive_content.close()
+    WORLD_CONTENT_ZIP.unlink(missing_ok=True)
+    http_session.close()
+
+
 def manifest():
     WORLD_DATA.mkdir(parents=True, exist_ok=True)
     SQL_DIR.mkdir(parents=True, exist_ok=True)
@@ -117,20 +134,14 @@ def manifest():
         response.raise_for_status()
         manifest_json = response.json()
         MANIFEST_PATH.write_text(json.dumps(manifest_json, indent=2, ensure_ascii=False))
+
+        for file in WORLD_DATA.iterdir():
+            if file.is_file():
+                file.unlink(missing_ok=True)
+
+        update_manifest(manifest_json, http_session)
     else:
         manifest_text = MANIFEST_PATH.read_text(encoding='utf-8')
         manifest_json = json.loads(manifest_text)
-        manifest = Manifest(manifest_json)
-        db_url = get_db_url(manifest, LANGUAGE)
-        json_urls = get_json_urls(manifest, LANGUAGE)
-        json_urls.append(["world_content.zip", db_url])
-        for item in json_urls:
-            download_d2_json(http_session, item, dev=True)
-        with ZipFile(WORLD_CONTENT_ZIP) as zip64:
-            archive_item_name = zip64.namelist()[0]
-            archive_content = zip64.open(archive_item_name, "r")
-            content = archive_content.read()
-            WORLD_CONTENT_DB.write_bytes(content)
-            archive_content.close()
-        WORLD_CONTENT_ZIP.unlink(missing_ok=True)
-        http_session.close()
+
+        update_manifest(manifest_json, http_session)

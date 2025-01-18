@@ -130,3 +130,15 @@ select distinct DestinyPlugSetDefinition.json ->> 'hash' as Id,
                 json_each.value ->> 'plugItemHash'       as InventoryItemId
 from DestinyPlugSetDefinition, json_each(DestinyPlugSetDefinition.json ->> 'reusablePlugItems')
 order by Id;
+
+
+-- Season Defs
+select json -> 'hash'                                as Id,
+       json -> 'displayProperties' ->> 'name'        as Name,
+       json -> 'displayProperties' ->> 'description' as Description,
+       json -> 'displayProperties' ->> 'icon'        as Icon,
+       json ->> 'seasonNumber'                       as SeasonNumber,
+       json ->> 'startDate'                          as StartDate,
+       json ->> 'endDate'                            as EndDate
+from DestinySeasonDefinition
+order by SeasonNumber;

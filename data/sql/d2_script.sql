@@ -215,6 +215,9 @@ create table if not exists target.weapon
     flavor_text       text    not null,
     display_name      text    not null,
     tier_type         integer not null,
+    season_year       integer not null,
+    season_number     integer not null,
+    season_name       text    not null,
     ammo_type_id      integer not null,
     equipment_slot_id integer not null,
     lore_id           integer not null,
@@ -228,8 +231,12 @@ create table if not exists target.weapon
 create index target.weapon_name_idx on weapon (name);
 create index target.weapon_display_name_idx on weapon (display_name);
 create index target.weapon_tier_type_idx on weapon (tier_type);
+create index target.weapon_season_year_idx on weapon (season_year);
+create index target.weapon_season_number_idx on weapon (season_number);
+create index target.weapon_season_name_idx on weapon (season_name);
 
-insert into target.weapon (id, name, icon, watermark, screenshot, flavor_text, display_name, tier_type, ammo_type_id,
+insert into target.weapon (id, name, icon, watermark, screenshot, flavor_text, display_name, tier_type, season_year,
+                           season_number, season_name, ammo_type_id,
                            equipment_slot_id, lore_id, damage_type_id)
 select json ->> 'hash'                                      as Id,
        json -> 'displayProperties' ->> 'name'               as Name,
@@ -239,6 +246,9 @@ select json ->> 'hash'                                      as Id,
        json ->> 'flavorText'                                as FlavorText,
        json ->> 'itemTypeDisplayName'                       as DisplayName,
        json -> 'inventory' ->> 'tierTypeName'               as TierType,
+       json ->> 'seasonYear'                                as SeasonYear,
+       json ->> 'seasonNumber'                              as SeasonNumber,
+       json ->> 'seasonName'                                as SeasonName,
        json -> 'equippingBlock' ->> 'ammoType'              as AmmoType,
        json -> 'equippingBlock' ->> 'equipmentSlotTypeHash' as EquipmentSlot,
        coalesce(json ->> 'loreHash', 0)                     as LoreHash,
