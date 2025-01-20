@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+data/assets/
+data/world_content_data/
+data/data_assets/
+data/watermarks/
+.venv/
+
+settings.json
+*.db
+*.db-shm
+*.db-wal
+
+__pycache__/
+*.ini
