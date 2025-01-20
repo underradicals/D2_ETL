@@ -1,3 +1,4 @@
+.vs/
 .idea/
 .vscode/
 data/assets/
@@ -6,6 +7,9 @@ data/data_assets/
 data/watermarks/
 .venv/
 
+obj/
+bin/
+
 settings.json
 *.db
 *.db-shm
@@ -13,3 +17,5 @@ settings.json
 
 __pycache__/
 *.ini
+
+node_modules/
