@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>a54375d3-17d9-49c9-926d-791d2ecf443f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\D2ETL.Core\D2ETL.Core.csproj" />
+    <ProjectReference Include="..\D2ETL.Infrastructure\D2ETL.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

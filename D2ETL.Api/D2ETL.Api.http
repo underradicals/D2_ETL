@@ -1,0 +1,6 @@
+@D2ETL.Api_HostAddress = http://localhost:5164
+
+GET {{D2ETL.Api_HostAddress}}/damage_type/
+Accept: application/json
+
+###
