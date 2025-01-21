@@ -1,0 +1,20 @@
+﻿.route-path {
+    background-color: #eee;
+    width: fit-content;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    border-radius: 9999px;
+    margin-inline-start: 1rem;
+    margin-block-start: 3rem;
+
+    .route-path--method {
+        color: red;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    .route-path--route {
+        color: blueviolet;
+        font-weight: 300;
+    }
+}

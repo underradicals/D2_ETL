@@ -1,0 +1,19 @@
+﻿.nav-button {
+    display: inline-block;
+    border-radius: 9999px;
+    padding-block: 0.3rem;
+    padding-inline: 1.5rem;
+    font-size: 0.7rem;
+    background-color: yellow;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out;
+    
+    &:hover {
+        background-color: #bebe00;
+    }
+    
+    &:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+}
