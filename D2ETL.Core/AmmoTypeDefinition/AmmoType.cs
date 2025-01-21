@@ -1,20 +1,20 @@
-﻿namespace D2ETL.Core.AmmoTypeDefinition;
+﻿using D2ETL.Core.Models;
 
-public class AmmoType
+namespace D2ETL.Core.AmmoTypeDefinition;
+
+public class AmmoType : Entity
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public string Icon { get; set; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
+    public string Description { get; init; } = string.Empty;
+    public string Icon { get; init; } = string.Empty;
 
-    public AmmoType()
+    public AmmoType() 
     {
         
     }
 
-    public AmmoType(int id, string name, string description, string icon)
+    public AmmoType(long id, string name, string description, string icon) : base(id)
     {
-        Id = id;
         Name = name;
         Description = description;
         Icon = icon;
