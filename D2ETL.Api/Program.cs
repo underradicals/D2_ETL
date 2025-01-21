@@ -1,4 +1,5 @@
 using D2ETL.Core;
+using D2ETL.Core.AmmoTypeDefinition;
 using D2ETL.Core.DamageTypeDefinition.GetAllDamageType;
 using D2ETL.Core.DamageTypeDefinition.GetDamageTypeById;
 using D2ETL.Infrastructure;
@@ -34,6 +35,18 @@ app.MapGet("/damage_type", async (IMediator mediator) =>
 app.MapGet("/damage_type/{id:long}", async (IMediator mediator, long id) =>
 {
     var response = await mediator.Send(new DamageTypeByIdQuery(id));
+    return response;
+});
+
+app.MapGet("/ammo_type", async (IMediator mediator) =>
+{
+    var response = await mediator.Send(new GetAllAmmoTypeQuery());
+    return response;
+});
+
+app.MapGet("/ammo_type/{id:long}", async (IMediator mediator, long id) =>
+{
+    var response = await mediator.Send(new GetByIdAmmoTypeQuery(id));
     return response;
 });
 
