@@ -4,17 +4,24 @@ import {NavLink} from "react-router";
 /** @type {NavLinkDefinition[]} */
 const NavLinks = [
     {
+        id: 1,
         pathname: "/",
         text: "Home",
     },
     {
+        id: 2,
         pathname: "/damage_type",
         text: "Damage Type",
-    }  
+    },
+    {
+        id: 3,
+        pathname: "/ammo_type",
+        text: "Ammo Type",
+    }
 ]
 
 function createNavLink(item) {
-    return <NavLink to={item.pathname}>{item.text}</NavLink>
+    return <NavLink key={item.id} to={item.pathname}>{item.text}</NavLink>
 }
 
 function mapNavLinkButtonGroup(NavLinks) {

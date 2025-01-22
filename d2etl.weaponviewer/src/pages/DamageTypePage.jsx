@@ -1,23 +1,9 @@
-﻿/** @import {DamageTypeDefinition} from '../../types.js' */
-import {useState, useEffect} from 'react';
-import DamageTypeCard from "../features/DamageTypeCard/DamageTypeCard.jsx";
+﻿import DamageTypeCard from "../features/DamageTypeCard/DamageTypeCard.jsx";
 import NavigationButtonGroup from "../components/NavigationButtonGroup/NavigationButtonGroup.jsx";
 import RouteHeader from "../components/RouteHeader/RouteHeader.jsx";
+import useDestinyTypeOneData from "../hooks/useDestinyTypeOneData.js";
 
 import "./GetAllDamageType.css";
-
-/** @type {DamageTypeDefinition} */
-const initialState = {
-    name: '',
-    description: '',
-    icon: '',
-    color: {
-        red: 255,
-        green: 255,
-        blue: 255,
-        alpha: 255,
-    }
-}
 
 /**
  * @name DamageTypePage
@@ -27,17 +13,7 @@ const initialState = {
  * @constructor
  */
 function DamageTypePage() {
-    const [allTypes, setAllTypes] = useState([]);
-    const [typesById, setTypesById] = useState(initialState);
-
-    function loadDamageTypeData() {
-        fetch("http://localhost:5164/damage_type")
-            .then(res => res.json())
-            .then(data => {
-                setAllTypes(data);
-                setTypesById(data[0]);
-            });
-    }
+    const [allTypes, typesById,setTypesById] = useDestinyTypeOneData('damage_type');
 
     function handleOnClick(id) {
         return function (e) {
@@ -49,16 +25,13 @@ function DamageTypePage() {
         }
     }
 
-    useEffect(loadDamageTypeData, []);
-
-
     function mapDamageTypes(allTypes) {
         return allTypes.map(createDamageTypeCard)
     }
 
     function createDamageTypeCard(item) {
         return item.name !== 'Raid'
-            ? (<DamageTypeCard damageType={item}/>)
+            ? (<DamageTypeCard  key={item.id} damageType={item}/>)
             : ('')
     }
 
@@ -85,7 +58,7 @@ function DamageTypePage() {
                 {mapDamageTypeByIdButtonList(allTypes)}
             </div>
             <div className={`dt-icon-container`}>
-                <DamageTypeCard damageType={typesById}/>
+                <DamageTypeCard key={typesById.id} damageType={typesById}/>
             </div>
         </>)
 }
