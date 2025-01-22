@@ -6,6 +6,7 @@ import App from './App.jsx'
 import MainLayout from "./layouts/MainLayout.jsx";
 import GetAllDamageType from "./pages/DamageTypePage.jsx";
 import ErrorBoundary from "./pages/ErrorBoundary.jsx";
+import AmmoTypePage from "./pages/AmmoTypePage.jsx";
 
 export default function Main() {
     return (
@@ -21,6 +22,9 @@ export default function Main() {
                     </Route>
                     <Route path="/damage_type" element={<MainLayout title={`Damage Types`}/>}>
                         <Route index element={<GetAllDamageType/>}/>
+                    </Route>
+                    <Route path="/ammo_type" element={<MainLayout title={`Ammo Types`}/>}>
+                        <Route index element={<AmmoTypePage/>}/>
                     </Route>
                 </Routes>
             </BrowserRouter>
