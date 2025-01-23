@@ -1,5 +1,6 @@
 ﻿using D2ETL.Core.AmmoTypeDefinition;
 using D2ETL.Core.DamageTypeDefinition;
+using D2ETL.Core.LoreTypeDefinition;
 using D2ETL.Core.Models;
 using D2ETL.Infrastructure.EntityConfigurations;
 using MediatR;
@@ -18,11 +19,13 @@ public class ApplicationSqliteContext : DbContext
     
     public DbSet<DamageType> DamageTypes { get; set; }
     public DbSet<AmmoType> AmmoTypes { get; set; }
+    public DbSet<LoreType> LoreTypes { get; set; }
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new DamageTypeEntityConfiguration());
         builder.ApplyConfiguration(new AmmoTypeEntityConfiguration());
+        builder.ApplyConfiguration(new LoreTypeEntityConfiguration());
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

@@ -1,6 +1,7 @@
 ﻿using D2ETL.Core;
 using D2ETL.Core.AmmoTypeDefinition;
 using D2ETL.Core.DamageTypeDefinition;
+using D2ETL.Core.LoreTypeDefinition;
 using D2ETL.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,12 +19,14 @@ public static class ServiceCollectionPipeline
         {
             services.AddTransient<IDamageTypeRepository, DamageTypeRepository>();
             services.AddTransient<IAmmoTypeRepository, AmmoTypeRepository>();
+            services.AddTransient<ILoreTypeRepository, LoreTypeRepository>();
             services.AddTransient<ISQLiteConnectionFactory, SQLiteConnectionFactory>();
         }
         else
         {
             services.AddTransient<IDamageTypeRepository, DamageTypeEFRepository>();
             services.AddTransient<IAmmoTypeRepository, AmmoTypeEFRepository>();
+            services.AddTransient<ILoreTypeRepository, LoreTypeEFRepository>();
             services.AddDbContext<ApplicationSqliteContext>(options =>
             {
                 options.UseSqlite(configuration["ConnectionStrings:SQLiteConnection"])
