@@ -18,7 +18,8 @@ public static class D2ETLApplication
                     .WithHeaders(ContentType, "application/json")
                     .AllowAnyHeader());
         });
-
+        
+        builder.Services.AddHttpContextAccessor();
         builder.Services.AddInfrastructure(builder.Configuration);
         builder.Services.AddApplicationServices();
         

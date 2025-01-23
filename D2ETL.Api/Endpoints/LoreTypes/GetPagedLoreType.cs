@@ -13,9 +13,11 @@ public static class GetPagedLoreType
         return app;
     }
 
-    static async Task<PaginatedResult<List<LoreTypeResponse>>> GetPage(IMediator mediator, int pageSize, int pageNumber)
+    static async Task<PaginatedResult<List<LoreTypeResponse>>> GetPage(IMediator mediator, int? pageSize, int? pageNumber)
     {
-        var response = await mediator.Send(new LoreTypePaginatedQuery(pageSize, pageNumber));
+        // pageSize ??= 10;
+        // pageNumber ??= 1;
+        var response = await mediator.Send(new LoreTypePaginatedQuery(pageSize ??= 10, pageNumber ??= 1));
         return response;
     }
 }
