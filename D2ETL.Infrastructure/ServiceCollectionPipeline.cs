@@ -11,7 +11,7 @@ namespace D2ETL.Infrastructure;
 
 public static class ServiceCollectionPipeline
 {
-    private const string Environment = "Dapper";
+    private const string Environment = "EFCore";
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         

@@ -8,16 +8,21 @@ public class LoreType : Entity
     public string Description { get; init; } = string.Empty;
     public string Subtitle { get; init; } = string.Empty;
 
-    public LoreType() : base(0)
+    private LoreType() : base(0)
     {
-        
     }
 
     public LoreType(long id, string name, string description, string subtitle) : base(id)
     {
-        Name = name;
-        Description = description;
-        Subtitle = subtitle;
+        Name = name switch
+        {
+            "" when description != "" => string.Concat(description.AsSpan(0, 16), "..."),
+            "" when subtitle != "" => string.Concat(subtitle.AsSpan(0, 16), "..."),
+            _ => name
+        };
+
+        Description = description == string.Empty ? "No Content" : description;
+        Subtitle = subtitle == string.Empty ? "No Content" : subtitle;
     }
 
     public static LoreType From(long id, string name, string description, string subtitle)

@@ -13,15 +13,26 @@ public class LoreTypeRepository : ILoreTypeRepository
     {
         _factory = factory;
         var connection = _factory.CreateConnection();
-        TotalNumberOfRecords = connection.ExecuteScalar<int>("select count(*) from lore_type_definition;");
+        const string sql = """
+                           select count(*) from lore_type_definition
+                           where name != "" or description != "" or subtitle != ""
+                           order by id;
+                           """;
+        TotalNumberOfRecords = connection.ExecuteScalar<int>(sql);
     }
     
     public async Task<List<LoreType>> GetPagedResult(int limit, int offset)
     {
         var connection = _factory.CreateConnection();
-        const string sql = "select * from lore_type_definition order by id Limit @Limit offset @Offset";
-        var result = await connection.QueryAsync<LoreType>(sql, new { Limit = limit, Offset = offset });
-        return result.ToList();
+        const string sql = """
+                    select id, name, description, subtitle 
+                    from lore_type_definition
+                    where name != "" or description != "" or subtitle != ""
+                    order by id Limit @Limit offset @Offset
+                    """;
+        var result = (await connection.QueryAsync<LoreType>(sql, new { Limit = limit, Offset = offset }))
+            .Select(x => new LoreType(x.Id, x.Name, x.Description, x.Subtitle)).ToList();
+        return result;
     }
 
     public async Task<LoreType> GetById(long id)
@@ -29,7 +40,8 @@ public class LoreTypeRepository : ILoreTypeRepository
         var connection = _factory.CreateConnection();
         const string sql = "select * from lore_type_definition where id=@Id;";
         var result = await connection.QuerySingleAsync<LoreType>(sql, new { Id = id });
-        return result;
+        var response = new LoreType(result.Id, result.Name, result.Description, result.Subtitle);
+        return response;
     }
 
 }
