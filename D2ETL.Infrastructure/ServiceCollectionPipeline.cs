@@ -6,12 +6,15 @@ using D2ETL.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
+using Serilog.Core;
 
 namespace D2ETL.Infrastructure;
 
 public static class ServiceCollectionPipeline
 {
     private const string Environment = "EFCore";
+
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         
@@ -32,9 +35,9 @@ public static class ServiceCollectionPipeline
                 options.UseSqlite(configuration["ConnectionStrings:SQLiteConnection"])
                     .EnableSensitiveDataLogging(true)
                     .EnableDetailedErrors(true);
-            });    
+            });
         }
-        
+
         return services;
     }
 }

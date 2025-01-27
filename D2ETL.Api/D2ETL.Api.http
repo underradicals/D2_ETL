@@ -1,6 +1,27 @@
-@D2ETL.Api_HostAddress = http://localhost:5164
+@Api_HostAddress = http://localhost:8080
 
-GET {{D2ETL.Api_HostAddress}}/damage_type/
+GET {{Api_HostAddress}}/damage_type/
+Accept: application/json
+
+###
+
+GET {{Api_HostAddress}}/damage_type/1847026933
+Accept: application/json
+
+
+###
+
+GET {{Api_HostAddress}}/lore_type
+Accept: application/json
+
+###
+
+GET {{Api_HostAddress}}/lore_type?pageSize=10&pageNumber=2
+Accept: application/json
+
+### 
+
+GET {{Api_HostAddress}}/lore_type/25524335
 Accept: application/json
 
 ###

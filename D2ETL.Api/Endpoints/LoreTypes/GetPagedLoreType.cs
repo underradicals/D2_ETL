@@ -15,8 +15,6 @@ public static class GetPagedLoreType
 
     static async Task<PaginatedResult<List<LoreTypeResponse>>> GetPage(IMediator mediator, int? pageSize, int? pageNumber)
     {
-        // pageSize ??= 10;
-        // pageNumber ??= 1;
         var response = await mediator.Send(new LoreTypePaginatedQuery(pageSize ??= 10, pageNumber ??= 1));
         return response;
     }

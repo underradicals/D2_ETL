@@ -19,6 +19,6 @@ public class AmmoTypeEFRepository : IAmmoTypeRepository
 
     public async Task<AmmoType?> GetAmmoTypeById(long id)
     {
-        return await _context.AmmoTypes.FirstOrDefaultAsync();
+        return await _context.AmmoTypes.Where(x => x.Id == id).FirstOrDefaultAsync();
     }
 }

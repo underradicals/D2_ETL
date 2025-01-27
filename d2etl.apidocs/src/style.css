@@ -1,0 +1,258 @@
+:root {
+  --blue: blue;
+  --red: red;
+  --yellow: yellow;
+  --purple: purple;
+  --green: green;
+  --orange: orange;
+  --gray: gray;
+
+  --tint-blue-100: color-mix(in oklch, var(--blue), white 10%);
+  --tint-blue-200: color-mix(in oklch, var(--blue), white 20%);
+  --tint-blue-300: color-mix(in oklch, var(--blue), white 30%);
+  --tint-blue-400: color-mix(in oklch, var(--blue), white 40%);
+  --tint-blue-500: color-mix(in oklch, var(--blue), white 50%);
+  --tint-blue-600: color-mix(in oklch, var(--blue), white 60%);
+  --tint-blue-700: color-mix(in oklch, var(--blue), white 70%);
+  --tint-blue-800: color-mix(in oklch, var(--blue), white 80%);
+  --tint-blue-900: color-mix(in oklch, var(--blue), white 90%);
+
+  --shade-blue-100: color-mix(in oklch, var(--blue), black 10%);
+  --shade-blue-200: color-mix(in oklch, var(--blue), black 20%);
+  --shade-blue-300: color-mix(in oklch, var(--blue), black 30%);
+  --shade-blue-400: color-mix(in oklch, var(--blue), black 40%);
+  --shade-blue-500: color-mix(in oklch, var(--blue), black 50%);
+  --shade-blue-600: color-mix(in oklch, var(--blue), black 60%);
+  --shade-blue-700: color-mix(in oklch, var(--blue), black 70%);
+  --shade-blue-800: color-mix(in oklch, var(--blue), black 80%);
+  --shade-blue-900: color-mix(in oklch, var(--blue), black 90%);
+
+  --tone-blue-100: color-mix(in oklch, var(--blue), gray 10%);
+  --tone-blue-200: color-mix(in oklch, var(--blue), gray 20%);
+  --tone-blue-300: color-mix(in oklch, var(--blue), gray 30%);
+  --tone-blue-400: color-mix(in oklch, var(--blue), gray 40%);
+  --tone-blue-500: color-mix(in oklch, var(--blue), gray 50%);
+  --tone-blue-600: color-mix(in oklch, var(--blue), gray 60%);
+  --tone-blue-700: color-mix(in oklch, var(--blue), gray 70%);
+  --tone-blue-800: color-mix(in oklch, var(--blue), gray 80%);
+  --tone-blue-900: color-mix(in oklch, var(--blue), gray 90%);
+
+
+  /* RED */
+  --tint-red-100: color-mix(in oklch, var(--red), white 10%);
+  --tint-red-200: color-mix(in oklch, var(--red), white 20%);
+  --tint-red-300: color-mix(in oklch, var(--red), white 30%);
+  --tint-red-400: color-mix(in oklch, var(--red), white 40%);
+  --tint-red-500: color-mix(in oklch, var(--red), white 50%);
+  --tint-red-600: color-mix(in oklch, var(--red), white 60%);
+  --tint-red-700: color-mix(in oklch, var(--red), white 70%);
+  --tint-red-800: color-mix(in oklch, var(--red), white 80%);
+  --tint-red-900: color-mix(in oklch, var(--red), white 90%);
+
+  --shade-red-100: color-mix(in oklch, var(--red), black 10%);
+  --shade-red-200: color-mix(in oklch, var(--red), black 20%);
+  --shade-red-300: color-mix(in oklch, var(--red), black 30%);
+  --shade-red-400: color-mix(in oklch, var(--red), black 40%);
+  --shade-red-500: color-mix(in oklch, var(--red), black 50%);
+  --shade-red-600: color-mix(in oklch, var(--red), black 60%);
+  --shade-red-700: color-mix(in oklch, var(--red), black 70%);
+  --shade-red-800: color-mix(in oklch, var(--red), black 80%);
+  --shade-red-900: color-mix(in oklch, var(--red), black 90%);
+
+  --tone-red-100: color-mix(in oklch, var(--red), gray 10%);
+  --tone-red-200: color-mix(in oklch, var(--red), gray 20%);
+  --tone-red-300: color-mix(in oklch, var(--red), gray 30%);
+  --tone-red-400: color-mix(in oklch, var(--red), gray 40%);
+  --tone-red-500: color-mix(in oklch, var(--red), gray 50%);
+  --tone-red-600: color-mix(in oklch, var(--red), gray 60%);
+  --tone-red-700: color-mix(in oklch, var(--red), gray 70%);
+  --tone-red-800: color-mix(in oklch, var(--red), gray 80%);
+  --tone-red-900: color-mix(in oklch, var(--red), gray 90%);
+
+
+  /* YELLOW */
+  --tint-yellow-100: color-mix(in oklch, var(--yellow), white 10%);
+  --tint-yellow-200: color-mix(in oklch, var(--yellow), white 20%);
+  --tint-yellow-300: color-mix(in oklch, var(--yellow), white 30%);
+  --tint-yellow-400: color-mix(in oklch, var(--yellow), white 40%);
+  --tint-yellow-500: color-mix(in oklch, var(--yellow), white 50%);
+  --tint-yellow-600: color-mix(in oklch, var(--yellow), white 60%);
+  --tint-yellow-700: color-mix(in oklch, var(--yellow), white 70%);
+  --tint-yellow-800: color-mix(in oklch, var(--yellow), white 80%);
+  --tint-yellow-900: color-mix(in oklch, var(--yellow), white 90%);
+
+  --shade-yellow-100: color-mix(in oklch, var(--yellow), black 10%);
+  --shade-yellow-200: color-mix(in oklch, var(--yellow), black 20%);
+  --shade-yellow-300: color-mix(in oklch, var(--yellow), black 30%);
+  --shade-yellow-400: color-mix(in oklch, var(--yellow), black 40%);
+  --shade-yellow-500: color-mix(in oklch, var(--yellow), black 50%);
+  --shade-yellow-600: color-mix(in oklch, var(--yellow), black 60%);
+  --shade-yellow-700: color-mix(in oklch, var(--yellow), black 70%);
+  --shade-yellow-800: color-mix(in oklch, var(--yellow), black 80%);
+  --shade-yellow-900: color-mix(in oklch, var(--yellow), black 90%);
+
+  --tone-yellow-100: color-mix(in oklch, var(--yellow), gray 10%);
+  --tone-yellow-200: color-mix(in oklch, var(--yellow), gray 20%);
+  --tone-yellow-300: color-mix(in oklch, var(--yellow), gray 30%);
+  --tone-yellow-400: color-mix(in oklch, var(--yellow), gray 40%);
+  --tone-yellow-500: color-mix(in oklch, var(--yellow), gray 50%);
+  --tone-yellow-600: color-mix(in oklch, var(--yellow), gray 60%);
+  --tone-yellow-700: color-mix(in oklch, var(--yellow), gray 70%);
+  --tone-yellow-800: color-mix(in oklch, var(--yellow), gray 80%);
+  --tone-yellow-900: color-mix(in oklch, var(--yellow), gray 90%);
+
+
+  /* PURPLE */
+  --tint-purple-100: color-mix(in oklch, var(--purple), white 10%);
+  --tint-purple-200: color-mix(in oklch, var(--purple), white 20%);
+  --tint-purple-300: color-mix(in oklch, var(--purple), white 30%);
+  --tint-purple-400: color-mix(in oklch, var(--purple), white 40%);
+  --tint-purple-500: color-mix(in oklch, var(--purple), white 50%);
+  --tint-purple-600: color-mix(in oklch, var(--purple), white 60%);
+  --tint-purple-700: color-mix(in oklch, var(--purple), white 70%);
+  --tint-purple-800: color-mix(in oklch, var(--purple), white 80%);
+  --tint-purple-900: color-mix(in oklch, var(--purple), white 90%);
+
+  --shade-purple-100: color-mix(in oklch, var(--purple), black 10%);
+  --shade-purple-200: color-mix(in oklch, var(--purple), black 20%);
+  --shade-purple-300: color-mix(in oklch, var(--purple), black 30%);
+  --shade-purple-400: color-mix(in oklch, var(--purple), black 40%);
+  --shade-purple-500: color-mix(in oklch, var(--purple), black 50%);
+  --shade-purple-600: color-mix(in oklch, var(--purple), black 60%);
+  --shade-purple-700: color-mix(in oklch, var(--purple), black 70%);
+  --shade-purple-800: color-mix(in oklch, var(--purple), black 80%);
+  --shade-purple-900: color-mix(in oklch, var(--purple), black 90%);
+
+  --tone-purple-100: color-mix(in oklch, var(--purple), gray 10%);
+  --tone-purple-200: color-mix(in oklch, var(--purple), gray 20%);
+  --tone-purple-300: color-mix(in oklch, var(--purple), gray 30%);
+  --tone-purple-400: color-mix(in oklch, var(--purple), gray 40%);
+  --tone-purple-500: color-mix(in oklch, var(--purple), gray 50%);
+  --tone-purple-600: color-mix(in oklch, var(--purple), gray 60%);
+  --tone-purple-700: color-mix(in oklch, var(--purple), gray 70%);
+  --tone-purple-800: color-mix(in oklch, var(--purple), gray 80%);
+  --tone-purple-900: color-mix(in oklch, var(--purple), gray 90%);
+
+
+  /* GREEN */
+  --tint-green-100: color-mix(in oklch, var(--green), white 10%);
+  --tint-green-200: color-mix(in oklch, var(--green), white 20%);
+  --tint-green-300: color-mix(in oklch, var(--green), white 30%);
+  --tint-green-400: color-mix(in oklch, var(--green), white 40%);
+  --tint-green-500: color-mix(in oklch, var(--green), white 50%);
+  --tint-green-600: color-mix(in oklch, var(--green), white 60%);
+  --tint-green-700: color-mix(in oklch, var(--green), white 70%);
+  --tint-green-800: color-mix(in oklch, var(--green), white 80%);
+  --tint-green-900: color-mix(in oklch, var(--green), white 90%);
+
+  --shade-green-100: color-mix(in oklch, var(--green), black 10%);
+  --shade-green-200: color-mix(in oklch, var(--green), black 20%);
+  --shade-green-300: color-mix(in oklch, var(--green), black 30%);
+  --shade-green-400: color-mix(in oklch, var(--green), black 40%);
+  --shade-green-500: color-mix(in oklch, var(--green), black 50%);
+  --shade-green-600: color-mix(in oklch, var(--green), black 60%);
+  --shade-green-700: color-mix(in oklch, var(--green), black 70%);
+  --shade-green-800: color-mix(in oklch, var(--green), black 80%);
+  --shade-green-900: color-mix(in oklch, var(--green), black 90%);
+
+  --tone-green-100: color-mix(in oklch, var(--green), gray 10%);
+  --tone-green-200: color-mix(in oklch, var(--green), gray 20%);
+  --tone-green-300: color-mix(in oklch, var(--green), gray 30%);
+  --tone-green-400: color-mix(in oklch, var(--green), gray 40%);
+  --tone-green-500: color-mix(in oklch, var(--green), gray 50%);
+  --tone-green-600: color-mix(in oklch, var(--green), gray 60%);
+  --tone-green-700: color-mix(in oklch, var(--green), gray 70%);
+  --tone-green-800: color-mix(in oklch, var(--green), gray 80%);
+  --tone-green-900: color-mix(in oklch, var(--green), gray 90%);
+
+
+  /* ORANGE */
+  --tint-orange-100: color-mix(in oklch, var(--orange), white 10%);
+  --tint-orange-200: color-mix(in oklch, var(--orange), white 20%);
+  --tint-orange-300: color-mix(in oklch, var(--orange), white 30%);
+  --tint-orange-400: color-mix(in oklch, var(--orange), white 40%);
+  --tint-orange-500: color-mix(in oklch, var(--orange), white 50%);
+  --tint-orange-600: color-mix(in oklch, var(--orange), white 60%);
+  --tint-orange-700: color-mix(in oklch, var(--orange), white 70%);
+  --tint-orange-800: color-mix(in oklch, var(--orange), white 80%);
+  --tint-orange-900: color-mix(in oklch, var(--orange), white 90%);
+
+  --shade-orange-100: color-mix(in oklch, var(--orange), black 10%);
+  --shade-orange-200: color-mix(in oklch, var(--orange), black 20%);
+  --shade-orange-300: color-mix(in oklch, var(--orange), black 30%);
+  --shade-orange-400: color-mix(in oklch, var(--orange), black 40%);
+  --shade-orange-500: color-mix(in oklch, var(--orange), black 50%);
+  --shade-orange-600: color-mix(in oklch, var(--orange), black 60%);
+  --shade-orange-700: color-mix(in oklch, var(--orange), black 70%);
+  --shade-orange-800: color-mix(in oklch, var(--orange), black 80%);
+  --shade-orange-900: color-mix(in oklch, var(--orange), black 90%);
+
+  --tone-orange-100: color-mix(in oklch, var(--orange), gray 10%);
+  --tone-orange-200: color-mix(in oklch, var(--orange), gray 20%);
+  --tone-orange-300: color-mix(in oklch, var(--orange), gray 30%);
+  --tone-orange-400: color-mix(in oklch, var(--orange), gray 40%);
+  --tone-orange-500: color-mix(in oklch, var(--orange), gray 50%);
+  --tone-orange-600: color-mix(in oklch, var(--orange), gray 60%);
+  --tone-orange-700: color-mix(in oklch, var(--orange), gray 70%);
+  --tone-orange-800: color-mix(in oklch, var(--orange), gray 80%);
+  --tone-orange-900: color-mix(in oklch, var(--orange), gray 90%);
+
+  --gray-100: hsl(0, 0%, 90%);
+  --gray-200: hsl(0, 0%, 80%);
+  --gray-300: hsl(0, 0%, 70%);
+  --gray-400: hsl(0, 0%, 60%);
+  --gray-500: hsl(0, 0%, 50%);
+  --gray-600: hsl(0, 0%, 40%);
+  --gray-700: hsl(0, 0%, 30%);
+  --gray-800: hsl(0, 0%, 20%);
+  --gray-900: hsl(0, 0%, 10%);
+
+  --surface-100: light-dark(var(--gray-100), var(--gray-900));
+  --surface-200: light-dark(var(--gray-200), var(--gray-800));
+  --surface-300: light-dark(var(--gray-300), var(--gray-700));
+  --surface-400: light-dark(var(--gray-400), var(--gray-600));
+
+  --foreground-600: light-dark(var(--gray-600), var(--gray-400));
+  --foreground-700: light-dark(var(--gray-700), var(--gray-300));
+  --foreground-800: light-dark(var(--gray-800), var(--gray-200));
+  --foreground-900: light-dark(var(--gray-900), var(--gray-100));
+}
+
+html {
+  color-scheme: dark;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+body {
+  font-size: 1rem;
+  background-color: var(--surface-100);
+}
+
+.panel {
+  width: 400px;
+  aspect-ratio: 16 / 9;
+  background-color: var(--surface-200);
+  color: var(--foreground-900);
+}
+
+.box1 {
+  width: 400px;
+  height: 400px;
+  background-color: var(--tint-blue-100);
+}
+
+.box2 {
+  width: 400px;
+  height: 400px;
+  background-color: var(--tone-blue-100);
+}
+
+.box3 {
+  width: 400px;
+  height: 400px;
+  background-color: var(--shade-blue-100);
+}
